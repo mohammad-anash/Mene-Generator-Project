@@ -3,43 +3,66 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mene Generator Project</title>
+    <title>Meme Generator Project</title>
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body class="bg-slate-900 w-full h-screen flex justify-center items-center">
-    <div class="mene-generator w-1/2 h-1/2 bg-slate-800 flex">
-      <form id="forms" class="w-1/2 flex flex-col justify-center items-center">
-        <input
-          type="text"
-          id="image-url"
-          placeholder="Image Url"
-          class="bg-slate-900 text-white my-3 outline-none rounded-sm p-1 text-[15px] bg-slate-900 placeholder:text-xs"
-        />
-        <input
-          type="text"
-          id="top-text"
-          placeholder="Top Text"
-          class="bg-slate-900 text-white my-3 outline-none rounded-sm p-1 text-[15px] bg-slate-900 placeholder:text-xs"
-        />
-        <input
-          type="text"
-          id="bottom-text"
-          placeholder="Bottom Text"
-          class="bg-slate-900 text-white my-3 outline-none rounded-sm p-1 text-[15px] bg-slate-900 placeholder:text-xs"
-        />
-        <button
-          id="create-meme"
-          class="p-2 bg-slate-900 w-44 text-white text-xs cursor-pointer rounded-sm my-2"
-        >
-          Create Meme
-        </button>
-      </form>
-      <div id="image-container" class="w-1/2 flex justify-center items-center">
-        <img class="w-full h-full object-cover object-center"
-          src=""
-          id="img-tag"
-        />
+  <body class="w-full h-screen bg-slate-900">
+    <div
+      id="main-container"
+      class="w-full h-full bg-slate-900 flex flex-col justify-center items-center"
+    >
+      <div id="head">
+        <h1 class="text-white tracking-tighter text-5xl text-center p-5">
+          Meme Generator
+        </h1>
       </div>
+
+      <div id="meme-container" class="w-3/5 h-1/2 flex">
+        <div id="left" class="w-1/2 h-full bg-slate-800">
+          <form class="w-full h-full flex flex-col items-center justify-center">
+            <input
+              type="text"
+              class="rounded-sm m-2 bg-slate-900 text-[13px] w-48 p-3 text-white outline-none placeholder:text-xs"
+              placeholder="Top text"
+              id="top-text"
+            />
+            <input
+              type="text"
+              class="rounded-sm m-2 bg-slate-900 text-[13px] w-48 p-3 text-white outline-none placeholder:text-xs"
+              placeholder="Bottom text"
+              id="bottom-text"
+            />
+            <button
+              id="create-meme"
+              class="py-3 m-2 px-8 text-black rounded-sm text-sm bg-[#38BDF8] cursor-pointer"
+            >
+              Set Text On Meme
+            </button>
+          </form>
+        </div>
+        <div id="rigth" class="w-1/2 h-full">
+          <img
+            src="https://www.memegenerator.top/memes/Ancient-Aliens-Meme.jpg"
+            class="w-full h-full object-cover object-center"
+            id="meme-img"
+          />
+        </div>
+      </div>
+      <button
+        id="more-img"
+        class="text-black text-xs bg-[#38BDF8] m-4 p-2 px-8 rounded-sm"
+      >
+        More Memes
+      </button>
+    </div>
+    <div id="more-img-container" class="w-full h-screen">
+      <div
+        id="close-button"
+        class="text-white text-5xl cursor-pointer absolute top-0 right-12"
+      >
+        x
+      </div>
+      <div id="more-img-store" class="h-screen flex justify-center items-center flex-wrap gap-5 my-20"></div>
     </div>
     <script src="js/index.js"></script>
   </body>
