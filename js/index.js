@@ -108,9 +108,12 @@ function createMemeFunctionality({
 }) {
   event.preventDefault();
 
-  topTextDiv.innerText = topTextInput.value;
-  bottomTextDiv.innerText = bottomTextInput.value;
-
+  if (topTextInput.value.trim() === "" || bottomTextInput.value.trim() === "") {
+    alert("please fill the input");
+  } else {
+    topTextDiv.innerText = topTextInput.value;
+    bottomTextDiv.innerText = bottomTextInput.value;
+  }
   topTextInput.value = "";
   bottomTextInput.value = "";
 }
