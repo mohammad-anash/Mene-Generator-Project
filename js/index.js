@@ -1,5 +1,7 @@
 // get element by id
 const [
+  topTextInput,
+  bottomTextInput,
   topTextDiv,
   bottomTextDiv,
   createMemeButton,
@@ -11,6 +13,8 @@ const [
 ] = [
   document.getElementById("top-text"),
   document.getElementById("bottom-text"),
+  document.getElementById("top-text-div"),
+  document.getElementById("bottom-text-div"),
   document.getElementById("create-meme"),
   document.getElementById("meme-img"),
   document.getElementById("more-img"),
@@ -21,29 +25,38 @@ const [
 
 document.body.addEventListener("click", function (event) {
   event.preventDefault();
-  if (event.target.id === "create-meme") {
-    createMemeFunctionality({
-      event,
-      topTextDiv,
-      bottomTextDiv,
-      ImageDiv,
-    });
-  }
-  if (event.target.id === "more-img") {
-    mainContainer.style.display = "none";
-    imageContainer.style.display = "block";
-  }
-  if (event.target.id === "close-button") {
-    mainContainer.style.display = "flex";
-    imageContainer.style.display = "none";
-  }
-  if (event.target.id === "select-img") {
-    ImageDiv.src = "";
-    ImageDiv.src = event.target.src;
+  switch (event.target.id) {
+    case "create-meme":
+      createMemeFunctionality({
+        event,
+        topTextInput,
+        bottomTextInput,
+        topTextDiv,
+        bottomTextDiv,
+      });
+      break;
+    case "more-img":
+      mainContainer.style.display = "none";
+      imageContainer.style.display = "block";
+      break;
+    case "close-button":
+      mainContainer.style.display = "flex";
+      imageContainer.style.display = "none";
+      break;
+    case "select-img":
+      ImageDiv.src = "";
+      topTextDiv.innerText = "";
+      bottomTextDiv.innerText = "";
+      ImageDiv.src = event.target.src;
+      break;
+    default:
+      "Please Write Correct Value";
   }
 });
 
-// Image Urls
+// image urls Fragment, and Hide Image Container
+imageContainer.classList.add("hidden");
+const fragment = document.createDocumentFragment();
 const ImageUrls = [
   "https://www.memegenerator.top/memes/Ancient-Aliens-Meme.jpg",
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSWY-KS-bhcoNA_4CwCOkI1rT6l29sg2t1VA&s",
@@ -68,8 +81,6 @@ const ImageUrls = [
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWTezXe7wlJUgigoWFqQ7pnGjqA1n5c9ir8w&s",
 ];
 
-imageContainer.classList.add("hidden");
-const fragment = document.createDocumentFragment();
 const getMoreMeme = () => {
   ImageUrls.forEach((Urls) => {
     const createImageDiv = document.createElement("img");
@@ -90,13 +101,19 @@ const getMoreMeme = () => {
 // create Mene Functionalityd
 function createMemeFunctionality({
   event,
-  imageUrlDiv,
+  topTextInput,
+  bottomTextInput,
   topTextDiv,
   bottomTextDiv,
-  ImageDiv,
 }) {
   event.preventDefault();
+
+  topTextDiv.innerText = topTextInput.value;
+  bottomTextDiv.innerText = bottomTextInput.value;
+
+  topTextInput.value = "";
+  bottomTextInput.value = "";
 }
 
-mainContainer.append(fragment);
 getMoreMeme();
+mainContainer.append(fragment);
