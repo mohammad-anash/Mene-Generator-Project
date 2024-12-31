@@ -51,6 +51,9 @@ const setTextOnMeme = (event) => {
     bottomTextDiv.textContent = bottomTextInput.value;
   }
 
+  getEle.insertAdjacentElement('afterbegin', topTextDiv);
+  getEle.insertAdjacentElement('beforeend', bottomTextDiv);
+
   topTextInput.value = '';
   bottomTextInput.value = '';
 };
@@ -101,7 +104,7 @@ const takePicture = (event) => {
   return video.replaceWith(createImg);
 };
 
-// createMoreImages(urls);
+const storeMemeInStoreContainer = () => {};
 
 document.body.addEventListener('click', (event) => {
   event.preventDefault();
